@@ -87,11 +87,19 @@ services:
   neo4j:
     image: neo4j
     restart: always
-    volume:
+    volumes:
       - /data/neo4j:/data
     ports:
       - 7474:7474
       - 7687:7687
+  
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - ./data/redis:/var/lib/redis
   
   # nginx:
   #   image: nginx:1.17.10

@@ -42,6 +42,8 @@ services:
       - ./databases/mysql/.env
     volumes:
       - ./data/mysqld:/var/lib/mysql
+    ports:
+      - 3306:3306
 
   # blog microservice
   ghost:

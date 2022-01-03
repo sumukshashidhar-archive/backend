@@ -13,7 +13,7 @@ services:
   # database service
   mongodb:
     image: mongo
-    restart: always
+    restart: on-failure
     ports: 
       - 27017:27017
     volumes:
@@ -36,7 +36,7 @@ services:
   # mysql database
   mysqldb:
     image: mysql:5.7
-    restart: always
+    restart: on-failure
     env_file:
       - ./databases/mysql/.env
     volumes:
@@ -59,14 +59,14 @@ services:
   
   adminer:
     image: adminer
-    restart: always
+    restart: on-failure
     ports:
       - 4000:8080
 
   # database viewer service
   mongo-express:
     image: mongo-express
-    restart: always
+    restart: on-failure
     ports: 
       - 4001:8081
     depends_on:
@@ -74,12 +74,28 @@ services:
     env_file:
       - ./external-microservices/mongo-express/.env
   
+  # nginx:
+  #   image: nginx:1.17.10
+  #   restart: on-failure
+  #   volumes:
+  #     - ./loadbalancer/nginx.conf:/etc/nginx/nginx.conf
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   depends_on:
+  #     - hello-service
+  #     - mongo-express
+  #     - adminer
+  #     - mysqldb
+  #     - mongodb
+  #     - ghost
+  #     - authentication
 
   nginx:
     build: ./loadbalancer/.
     restart: on-failure
-    volumes:
-      - ./loadbalancer/nginx.conf:/etc/nginx/nginx.conf
+    # volumes:
+    #   - ./loadbalancer/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
       - 443:443
@@ -91,6 +107,3 @@ services:
       - mongodb
       - ghost
       - authentication
-    
-
-

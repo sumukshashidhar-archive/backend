@@ -46,6 +46,7 @@ mkdir ./data/mysqld
 mkdir ./data/ghost
 mkdir ./data/nextcloud
 mkdir ./data/neo4j
+mkdir ./data/redis
 # nginx certs
 cp ./../*.pem ./loadbalancer/certs/
 

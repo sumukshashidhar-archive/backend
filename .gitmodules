@@ -1,0 +1,6 @@
+[submodule "internal-microservices/hello-service"]
+	path = internal-microservices/hello-service
+	url = https://github.com/sumukshashidhar/hello-service.git
+[submodule "internal-microservices/authentication-service"]
+	path = internal-microservices/authentication-service
+	url = https://github.com/sumukshashidhar/authentication-service.git

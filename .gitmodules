@@ -4,3 +4,6 @@
 [submodule "internal-microservices/authentication-service"]
 	path = internal-microservices/authentication-service
 	url = https://github.com/sumukshashidhar/authentication-service.git
+[submodule "loadbalancer"]
+	path = loadbalancer
+	url = https://github.com/sumukshashidhar/loadbalancer.git

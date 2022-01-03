@@ -35,8 +35,7 @@ services:
 
   # mysql database
   mysqldb:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysql:5.7
     restart: always
     env_file:
       - ./databases/mysql/.env

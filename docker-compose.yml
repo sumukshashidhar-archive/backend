@@ -6,7 +6,7 @@ services:
     build: ./internal-microservices/hello-service/.
     restart: always
     ports: 
-      - 1000:3000
+      - 3000:3000
     env_file:
       - ./internal-microservices/hello-service/src/.env
   
@@ -26,7 +26,7 @@ services:
     build: ./internal-microservices/authentication-service/.
     restart: always
     ports: 
-      - 1001:3000
+      - 3001:3001
     env_file:
       - ./internal-microservices/authentication-service/src/.env
     depends_on:
@@ -49,7 +49,7 @@ services:
     image: ghost:4-alpine
     restart: always
     ports: 
-      - 2000:2368
+      - 2368:2368
     env_file:
       - ./external-microservices/ghost/.env
     volumes:
@@ -83,6 +83,14 @@ services:
       - ./data/nextcloud:/var/www/html
     env_file:
       - ./external-microservices/nextcloud/.env
+
+    neo4j:
+      image: neo4j
+      volume:
+        - /data/neo4j:/data
+      ports:
+        - 7474:7474
+        - 7687:7687
   
   # nginx:
   #   image: nginx:1.17.10
@@ -101,19 +109,19 @@ services:
   #     - ghost
   #     - authentication
 
-  nginx:
-    build: ./loadbalancer/.
-    restart: always
-    # volumes:
-    #   - ./loadbalancer/nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - hello-service
-      - mongo-express
-      - adminer
-      - mysqldb
-      - mongodb
-      - ghost
-      - authentication
+  # nginx:
+  #   build: ./loadbalancer/.
+  #   restart: always
+  #   # volumes:
+  #   #   - ./loadbalancer/nginx.conf:/etc/nginx/nginx.conf
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   depends_on:
+  #     - hello-service
+  #     - mongo-express
+  #     - adminer
+  #     - mysqldb
+  #     - mongodb
+  #     - ghost
+  #     - authentication

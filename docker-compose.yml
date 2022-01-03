@@ -84,13 +84,14 @@ services:
     env_file:
       - ./external-microservices/nextcloud/.env
 
-    neo4j:
-      image: neo4j
-      volume:
-        - /data/neo4j:/data
-      ports:
-        - 7474:7474
-        - 7687:7687
+  neo4j:
+    image: neo4j
+    restart: always
+    volume:
+      - /data/neo4j:/data
+    ports:
+      - 7474:7474
+      - 7687:7687
   
   # nginx:
   #   image: nginx:1.17.10

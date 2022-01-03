@@ -1,3 +1,11 @@
+# run ubuntu stuff
+sudo apt-get update
+sudo apt-get upgrade
+
+# init and run submodule
+git submodule init
+git submodule update
+
 # to generate ENV files and keys and run docker!
 
 

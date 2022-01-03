@@ -38,12 +38,13 @@ cp ./databases/mongo/.env.template ./databases/mongo/.env
 # for ghost
 cp ./external-microservices/ghost/.env.template ./external-microservices/ghost/.env
 cp ./external-microservices/mongo-express/.env.template ./external-microservices/mongo-express/.env
-
+cp ./external-microservices/nextcloud/.env.template ./external-microservices/nextcloud/.env
 # make data directory locally
 mkdir ./data
 mkdir ./data/mongod
 mkdir ./data/mysqld
 mkdir ./data/ghost
+mkdir ./data/nextcloud
 
 # nginx certs
 cp ./../*.pem ./loadbalancer/certs/

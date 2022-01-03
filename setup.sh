@@ -45,6 +45,9 @@ mkdir ./data/mongod
 mkdir ./data/mysqld
 mkdir ./data/ghost
 
+# nginx certs
+cp ./../*.pem ./loadbalancer/certs/
+
 
 # finally run docker compose lol
 

@@ -73,6 +73,16 @@ services:
       - mongodb
     env_file:
       - ./external-microservices/mongo-express/.env
+
+  nextcloud:
+    image: nextcloud
+    restart: always
+    ports:
+      - 9000:80
+    volumes:
+      - ./data/nextcloud:/var/www/html
+    env_file:
+      - ./external-microservices/nextcloud/.env
   
   # nginx:
   #   image: nginx:1.17.10

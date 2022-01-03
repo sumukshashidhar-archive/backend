@@ -2,6 +2,9 @@
 sudo apt-get update
 sudo apt-get upgrade
 
+# install docker stuff
+sudo apt install docker-compose
+
 # init and run submodule
 git submodule init
 git submodule update
@@ -13,6 +16,10 @@ git submodule update
 cd internal-microservices/authentication-service/src && mkdir keys && cd keys && ssh-keygen -q -N '' -t rsa -b 4096 -m PEM -f private.key && openssl rsa -in private.key -pubout -outform PEM -out public.key && rm private.key.pub && cd ../../../../
 
 # copy public key to the other serivces
+## make the hello-service keys folder
+
+mkdir ./internal-microservices/hello-service/src/keys
+
 ## copy to the hello service first.
 cp ./internal-microservices/authentication-service/src/keys/public.key ./internal-microservices/hello-service/src/keys/public.key
 

@@ -5,15 +5,17 @@ services:
   hello-service:
     build: ./internal-microservices/hello-service/.
     restart: on-failure
-    ports: 1000:3000
+    ports: 
+      - 1000:3000
     env_file:
-      - ./internal-microservices/hello-service/.env
+      - ./internal-microservices/hello-service/src/.env
   
   # database service
   mongodb:
     image: mongo
     restart: always
-    ports: 27017:27017
+    ports: 
+      - 27017:27017
     volumes:
       - ./data/mongod/:/data/db
     env_file:
@@ -23,9 +25,10 @@ services:
   authentication:
     build: ./internal-microservices/authentication-service/.
     restart: on-failure
-    ports: 1001:3000
+    ports: 
+      - 1001:3000
     env_file:
-      - ./internal-microservices/authentication-service/.env
+      - ./internal-microservices/authentication-service/src/.env
     depends_on:
       - mongodb # want mongodb to start up before this.
   
@@ -44,7 +47,8 @@ services:
   ghost:
     image: ghost:4-alpine
     restart: on-failure
-    ports: 2000:2368
+    ports: 
+      - 2000:2368
     env_file:
       - ./external-microservices/ghost/.env
     volumes:
@@ -62,7 +66,8 @@ services:
   mongo-express:
     image: mongo-express
     restart: always
-    ports: 4001:8081
+    ports: 
+      - 4001:8081
     depends_on:
       - mongodb
   
@@ -83,7 +88,6 @@ services:
       - mongodb
       - ghost
       - authentication
-      - hello-service
     
 
 

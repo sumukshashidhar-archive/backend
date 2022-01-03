@@ -37,6 +37,7 @@ cp ./databases/mongo/.env.template ./databases/mongo/.env
 
 # for ghost
 cp ./external-microservices/ghost/.env.template ./external-microservices/ghost/.env
+cp ./external-microservices/mongo-express/.env.template ./external-microservices/mongo-express/.env
 
 # make data directory locally
 mkdir ./data

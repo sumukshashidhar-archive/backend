@@ -45,7 +45,7 @@ mkdir ./data/mongod
 mkdir ./data/mysqld
 mkdir ./data/ghost
 mkdir ./data/nextcloud
-
+mkdir ./data/neo4j
 # nginx certs
 cp ./../*.pem ./loadbalancer/certs/
 
